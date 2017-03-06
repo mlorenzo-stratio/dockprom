@@ -7,6 +7,7 @@ networks:
 volumes:
     prometheus_data: {}
     grafana_data: {}
+    webdav_data: {}
 
 services:
 
@@ -88,6 +89,23 @@ services:
       - 3000
     ports:
       - 3000:3000
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+
+
+  webdav:
+    image: olopopo/docker-nginx-webdav
+    container_name: webdav
+    volumes:
+      - /opt/dockprom/webdav/data/:/media
+      - /opt/dockprom/webdav/conf/webdav.htpasswd:/etc/nginx/htpasswd
+    restart: unless-stopped
+    expose:
+      - 80
+    ports:
+      - 8080:80
     networks:
       - monitor-net
     labels:
