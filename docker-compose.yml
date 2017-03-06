@@ -7,7 +7,6 @@ networks:
 volumes:
     prometheus_data: {}
     grafana_data: {}
-    webdav_data: {}
 
 services:
 
