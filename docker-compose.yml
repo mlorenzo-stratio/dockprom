@@ -99,12 +99,14 @@ services:
     container_name: webdav
     volumes:
       - /opt/dockprom/webdav/data/:/media
-      - /opt/dockprom/webdav/conf/webdav.htpasswd:/etc/nginx/htpasswd
     restart: unless-stopped
     expose:
       - 80
     ports:
       - 8080:80
+    environment:
+      - WRITE_HOST=172.17.0.1
+      - LOCALZONE="Europe/Madrid"
     networks:
       - monitor-net
     labels:
