@@ -9,9 +9,9 @@ global:
 
 # Load and evaluate rules in this file every 'evaluation_interval' seconds.
 rule_files:
-  - "targets.rules"
-  - "host.rules"
-  - "containers.rules"
+  - "targets.yml"
+  - "host.yml"
+  - "containers.yml"
 
 # A scrape configuration containing exactly one endpoint to scrape.
 scrape_configs:
